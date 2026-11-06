@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniTools Pro | Ultimate Developer & Creator Utility Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Adsterra Social Bar Script -->
+    <script data-cfasync="false" src="https://brijmohan.org/14/4f026a9b6f6ff7b8f93857fa964d7f81"></script>
+
+    <style>
+        :root {
+            --bg-deep: #030712;
+            --bg-card: #0b0f19;
+            --border-color: #1f293d;
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --accent: #f97316;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: var(--bg-deep); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 30px 15px; }
+        
+        .container { width: 100%; max-width: 1200px; }
+        
+        /* Header & Hero */
+        .header { text-align: center; margin-bottom: 40px; }
+        .logo-badge { background: rgba(99, 102, 241, 0.1); color: #818cf8; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700; border: 1px solid rgba(99, 102, 241, 0.2); display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px; }
+        h1 { font-size: 42px; font-weight: 800; line-height: 1.1; margin-bottom: 12px; background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .header p { color: var(--text-muted); font-size: 16px; }
+
+        /* Search & Filter Bar */
+        .controls-wrapper { display: flex; flex-direction: column; gap: 15px; margin-bottom: 35px; }
+        @media(min-width: 768px) { .controls-wrapper { flex-direction: row; justify-content: space-between; align-items: center; } }
+        
+        .search-box { position: relative; flex: 1; max-width: 450px; }
+        .search-box input { width: 100%; background: var(--bg-card); border: 1px solid var(--border-color); padding: 14px 18px 14px 45px; border-radius: 12px; color: #fff; font-size: 14px; outline: none; transition: 0.3s; }
+        .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15); }
+        .search-box svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; fill: var(--text-muted); }
+
+        .categories-nav { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; }
+        .cat-btn { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-muted); padding: 10px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: 0.2s; }
+        .cat-btn:hover, .cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        /* Tools Grid Layout */
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
+        .tool-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
+        .tool-card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-2px); }
+        
+        .tool-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .tool-icon { width: 40px; height: 40px; background: rgba(99, 102, 241, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--primary); }
+        .tool-title h3 { font-size: 16px; font-weight: 700; color: #fff; }
+        .tool-title span { font-size: 12px; color: var(--text-muted); }
+
+        /* Interactive Elements inside Tools */
+        textarea, input[type="text"] { width: 100%; background: #030712; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; color: #fff; font-size: 13px; outline: none; resize: none; margin-bottom: 12px; }
+        textarea:focus, input[type="text"]:focus { border-color: var(--primary); }
+        
+        .tool-actions { display: flex; gap: 8px; margin-bottom: 12px; }
+        .btn { background: var(--primary); color: #fff; border: none; padding: 10px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: 0.2s; flex: 1; }
+        .btn:hover { background: var(--primary-hover); }
+        .btn-accent { background: var(--accent); }
+        .btn-accent:hover { background: #ea580c; }
+
+        .result-box { background: #030712; border: 1px solid var(--border-color); padding: 12px; border-radius: 8px; font-size: 13px; color: #38bdf8; min-height: 45px; word-break: break-all; }
+
+        /* Ad Banner Section inside Grid */
+        .ad-banner-card { background: linear-gradient(135deg, #111827 0%, #0b0f19 100%); border: 2px dashed #374151; border-radius: 16px; padding: 24px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .ad-banner-card h4 { font-size: 15px; color: #fff; margin-bottom: 6px; }
+        .ad-banner-card p { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+        .ad-btn { background: #f97316; color: #fff; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="logo-badge">Next-Gen Multi-Tool Platform</span>
+            <h1>OmniTools Pro Suite</h1>
+            <p>Access high-performance developer, text, security, and web utilities instantly in one place.</p>
+        </div>
+
+        <!-- Controls: Search & Category Tabs -->
+        <div class="controls-wrapper">
+            <div class="search-box">
+                <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+                <input type="text" id="searchInput" placeholder="Search across all tools (e.g. Base64, Case, Password)..." onkeyup="filterTools()">
+            </div>
+            <div class="categories-nav">
+                <button class="cat-btn active" onclick="filterCategory('all', this)">All Tools</button>
+                <button class="cat-btn" onclick="filterCategory('text', this)">Text & Typography</button>
+                <button class="cat-btn" onclick="filterCategory('dev', this)">Developer & Code</button>
+                <button class="cat-btn" onclick="filterCategory('security', this)">Security & Hash</button>
+            </div>
+        </div>
+
+        <!-- Tools Grid -->
+        <div class="tools-grid" id="toolsGrid">
+
+            <!-- Tool 1: Text Case Converter -->
+            <div class="tool-card" data-category="text" data-name="text case converter upper lower capitalize">
+                <div class="tool-header">
+                    <div class="tool-icon">🔤</div>
+                    <div class="tool-title">
+                        <h3>Advanced Text Case Converter</h3>
+                        <span>Text & Typography</span>
+                    </div>
+                </div>
+                <textarea id="caseInput" placeholder="Type text here..." rows="2"></textarea>
+                <div class="tool-actions">
+                    <button class="btn" onclick="convertCase('upper')">UPPERCASE</button>
+                    <button class="btn" onclick="convertCase('lower')">lowercase</button>
+                    <button class="btn" onclick="convertCase('title')">Title Case</button>
+                </div>
+                <div class="result-box" id="caseResult">Converted text will appear here...</div>
+            </div>
+
+            <!-- Tool 2: Base64 Encoder / Decoder -->
+            <div class="tool-card" data-category="dev" data-name="base64 encoder decoder encode decode">
+                <div class="tool-header">
+                    <div class="tool-icon">🔐</div>
+                    <div class="tool-title">
+                        <h3>Base64 Encoder / Decoder</h3>
+                        <span>Developer & Code</span>
+                    </div>
+                </div>
+                <textarea id="base64Input" placeholder="Enter text to encode/decode..." rows="2"></textarea>
+                <div class="tool-actions">
+                    <button class="btn" onclick="b64Action('encode')">Encode</button>
+                    <button class="btn btn-accent" onclick="b64Action('decode')">Decode</button>
+                </div>
+                <div class="result-box" id="base64Result">Result output...</div>
+            </div>
+
+            <!-- Tool 3: Secure Password Generator -->
+            <div class="tool-card" data-category="security" data-name="secure password generator random pass">
+                <div class="tool-header">
+                    <div class="tool-icon">🛡️</div>
+                    <div class="tool-title">
+                        <h3>Secure Password Generator</h3>
+                        <span>Security & Hash</span>
+                    </div>
+                </div>
+                <input type="text" id="passLength" value="16" placeholder="Password length (e.g. 16)">
+                <div class="tool-actions">
+                    <button class="btn" onclick="generatePassword()">Generate Secure Key</button>
+                </div>
+                <div class="result-box" id="passResult">Click generate to create key...</div>
+            </div>
+
+            <!-- Adsterra Monetization Card Slot -->
+            <div class="ad-banner-card" data-category="all" data-name="sponsor ad">
+                <div style="font-size: 28px; margin-bottom: 8px;">💎</div>
+                <h4>Sponsor Resource</h4>
+                <p>Unlock advanced bulk data export features and premium developer kits.</p>
+                <a href="https://auctionr.org" target="_blank" class="ad-btn">Access Sponsor 🚀</a>
+            </div>
+
+            <!-- Tool 4: Word & Character Counter -->
+            <div class="tool-card" data-category="text" data-name="word character counter stats">
+                <div class="tool-header">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-title">
+                        <h3>Word & Character Counter</h3>
+                        <span>Text & Typography</span>
+                    </div>
+                </div>
+                <textarea id="counterInput" placeholder="Paste your article or text here..." rows="3" oninput="countStats()"></textarea>
+                <div class="result-box" id="counterResult" style="margin-top:0;">Words: 0 | Characters: 0 | Lines: 0</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Adsterra Popunder Script -->
+    <script data-cfasync="false" src="https://ahuramazda.org/1/c1560c5355ed78584a0bf9c99e4493a6"></script>
+
+    <script>
+        // Search Filter
+        function filterTools() {
+            let query = document.getElementById('searchInput').value.toLowerCase();
+            let cards = document.querySelectorAll('.tool-card, .ad-banner-card');
+            cards.forEach(card => {
+                let name = card.getAttribute('data-name');
+                if (name.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Category Filter
+        function filterCategory(category, btn) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            let cards = document.querySelectorAll('.tool-card, .ad-banner-card');
+            cards.forEach(card => {
+                let cat = card.getAttribute('data-category');
+                if (category === 'all' || cat === category || card.classList.contains('ad-banner-card')) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Tool 1 Logic
+        function convertCase(type) {
+            let val = document.getElementById('caseInput').value;
+            let res = '';
+            if (type === 'upper') res = val.toUpperCase();
+            if (type === 'lower') res = val.toLowerCase();
+            if (type === 'title') res = val.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
+            document.getElementById('caseResult').innerText = res || 'Result...';
+        }
+
+        // Tool 2 Logic
+        function b64Action(action) {
+            let val = document.getElementById('base64Input').value;
+            try {
+                let res = action === 'encode' ? btoa(unescape(encodeURIComponent(val))) : decodeURIComponent(escape(atob(val)));
+                document.getElementById('base64Result').innerText = res;
+            } catch (e) {
+                document.getElementById('base64Result').innerText = 'Error: Invalid input for conversion.';
+            }
+        }
+
+        // Tool 3 Logic
+        function generatePassword() {
+            let len = parseInt(document.getElementById('passLength').value) || 16;
+            let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*!";
+            let pass = "";
+            for (let i = 0; i < len; i++) {
+                pass += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            document.getElementById('passResult').innerText = pass;
+        }
+
+        // Tool 4 Logic
+        function countStats() {
+            let text = document.getElementById('counterInput').value;
+            let words = text.trim() ? text.trim().split(/\s+/).length : 0;
+            let chars = text.length;
+            let lines = text.split(/\r\n|\r|\n/).length;
+            document.getElementById('counterResult').innerText = `Words: ${words} | Characters: ${chars} | Lines: ${lines}`;
+        }
+    </script>
+</body>
+  </html>
